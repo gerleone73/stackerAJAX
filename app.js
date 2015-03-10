@@ -61,6 +61,9 @@ var showAnswerers = function(answerer) { // function expression
 
 	var scoreCount = result.find('.score');
 	scoreCount.text(answerer.score);
+
+	var profileImg = result.find('.profile_image');
+	profileImg.html('<img src=' + answerer.profile_image +'>');
 	
 
 
