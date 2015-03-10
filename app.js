@@ -60,7 +60,30 @@ var showAnswerers = function(answerer) { // function expression
 	postCount.text(answerer.post_count);
 
 	var acceptRate = result.find('.accept_rate');
-	acceptRate.text(answerer.user.accept_rate);
+
+	var rateArray =[];
+
+	rateArray.push(answerer.user.accept_rate);
+
+	var sorted = rateArray.sort();
+
+	acceptRate.text(sorted);
+
+	// NOTE not tried this yet: push($.each(answerer.user.accept_rate))
+
+/*	var postCount = result.find('.post_count');
+	postCount.text(answerer.post_count);
+
+	var acceptRate = result.find('.accept_rate');
+
+	var rateArray =[answerer.user.accept_rate];
+
+	var sorted = rateArray.sort();
+
+	acceptRate.text(sorted);
+*/
+	//acceptRate.text(answerer.user.accept_rate);
+	//acceptRate.text(answerer.user.accept_rate);
 
 	var scoreCount = result.find('.score');
 	scoreCount.text(answerer.score);
