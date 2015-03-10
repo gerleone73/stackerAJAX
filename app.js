@@ -55,20 +55,14 @@ var showAnswerers = function(answerer) { // function expression
 	
 	// clone our result template code
 	var result = $('.templates .answerers').clone();
+
+	var postCount = result.find('.post_count');
+	postCount.text(answerer.post_count);
+
+	var scoreCount = result.find('.score');
+	scoreCount.text(answerer.score);
 	
-	// Set the question properties in result
-	var questionElem = result.find('.question-text a');
-	questionElem.attr('href', answerer.link); // (target, set the target)
-	questionElem.text(answerer.title);
 
-	// set the date asked property in result
-	//var asked = result.find('.asked-date');
-	//var date = new Date(1000*question.creation_date); // unix timestamp convertor
-	//asked.text(date.toString());
-
-	// set the #views for question property in result
-	//var viewed = result.find('.viewed');
-	//viewed.text(question.view_count);
 
 	// set some properties related to asker
 	var person = result.find('.display_name');
