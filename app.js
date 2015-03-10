@@ -127,7 +127,7 @@ var getInspiration = function(inputtags) {
 		$('.search-results').html(searchResults);
 
 		$.each(response.items, function(i, item) {
-			var assembledQues = showAnswerers(item); // refers to item above
+			var assembledAns = showAnswerers(item); // refers to item above
 			$('.results').append(assembledQues);
 		});
 	})
@@ -168,8 +168,8 @@ var getUnanswered = function(inputtags) {
 		$('.search-results').html(searchResults);
 
 		$.each(response.items, function(i, item) {
-			var assembledAns = showAnswerers(item);
-			$('.results').append(assembledAns);
+			var assembledQues = showQuestion(item);
+			$('.results').append(assembledQues);
 		});
 	})
 
