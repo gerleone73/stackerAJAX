@@ -72,11 +72,11 @@ var showAnswerers = function(answerer) { // function expression
 
 	// set some properties related to asker
 	var person = result.find('.display_name');
-	person.html('<p>Name: <a target="_blank" href=http://stackoverflow.com/users/' + answerer.owner.user_id + ' >' +
-													answerer.owner.display_name +
+	person.html('<p>Name: <a target="_blank" href=http://stackoverflow.com/users/' + answerer.user.user_id + ' >' +
+													answerer.user.display_name +
 												'</a>' +
 							'</p>' +
- 							'<p>Reputation: ' + answerer.owner.reputation + '</p>'
+ 							'<p>Reputation: ' + answerer.user.reputation + '</p>'
 	);
 
 	return result;
@@ -128,7 +128,7 @@ var getInspiration = function(inputtags) {
 
 		$.each(response.items, function(i, item) {
 			var assembledAns = showAnswerers(item); // refers to item above
-			$('.results').append(assembledQues);
+			$('.results').append(assembledAns);
 		});
 	})
 
