@@ -16,6 +16,10 @@ $(document).ready( function() {
 	}); // submit
 }); // ready function
 
+$('.next-page').on('click', function() { 
+		page++; $('results').html(''); getUnanswered();
+	});
+
 // this function takes the question object returned by StackOverflow 
 // and creates new result to be appended to DOM
 var showQuestion = function(question) { // function expression
@@ -52,6 +56,8 @@ var showQuestion = function(question) { // function expression
 
 var showAnswerers = function(answerer) { // function expression
 	//could be changed to a function declaration .. function showquestion(question)
+
+	
 	
 	// clone our result template code
 	var result = $('.templates .answerers').clone();
@@ -70,9 +76,6 @@ var showAnswerers = function(answerer) { // function expression
 
 	acceptRate.text(sorted);
 
-	
-
-	// NOTE not tried this yet: push($.each(answerer.user.accept_rate))
 
 /*	var postCount = result.find('.post_count');
 	postCount.text(answerer.post_count);
@@ -179,6 +182,8 @@ var getInspiration = function(inputtags) {
 
 
 var getUnanswered = function(inputtags) {
+
+	var page = 1;
 	
 	// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
@@ -186,7 +191,8 @@ var getUnanswered = function(inputtags) {
 					site: 'stackoverflow',
 					order: 'desc',
 					sort: 'creation',
-					pagesize: '100'
+					page: page,
+					pagesize: '20'
 				  };
 	
 	var result = $.ajax({ // actually we dont need var result here as its not used
