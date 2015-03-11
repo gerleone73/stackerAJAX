@@ -59,15 +59,18 @@ var showAnswerers = function(answerer) { // function expression
 	var postCount = result.find('.post_count');
 	postCount.text(answerer.post_count);
 
+/*
 	var acceptRate = result.find('.accept_rate');
 
 	var rateArray =[];
 
 	rateArray.push(answerer.user.accept_rate);
 
-	var sorted = rateArray.sort();
+	var sorted = rateArray.sort(function(a, b){return b-a});
 
 	acceptRate.text(sorted);
+
+	
 
 	// NOTE not tried this yet: push($.each(answerer.user.accept_rate))
 
@@ -130,6 +133,8 @@ var getInspiration = function(inputtags) {
 	// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
 					tagged: inputtags,
+					//pagesize: '100',
+					//site: 'stackoverflow'
 					
 					};
 	//							site: 'stackoverflow',
@@ -137,7 +142,7 @@ var getInspiration = function(inputtags) {
 	//							sort: 'creation'};
 	
 	var result = $.ajax({
-		url: "http://api.stackexchange.com/2.2/tags/" + inputtags + "/top-answerers/all_time?pagesize=100&site=stackoverflow",
+		url: "http://api.stackexchange.com/2.2/tags/" + inputtags + "/top-answerers/all_time?pagesize=30&site=stackoverflow",
 		data: request,
 		dataType: "jsonp",
 		type: "GET",
@@ -145,9 +150,15 @@ var getInspiration = function(inputtags) {
 
 		.done(function(response){ // from the ajax call
 
+		response.items.sort(function(a, b) { 
+   		 return (b.score - a.score);
+		});
+
 		console.log(response);
 		var searchResults = showSearchResults(request.tagged, response.items.length);// we jump up to showSearchResults ()
 
+
+		
 			//var searchResults is now results from return results in showSearchResults()
 		
 		$('.search-results').html(searchResults);
