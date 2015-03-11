@@ -128,7 +128,11 @@ var showError = function(error){
 var getInspiration = function(inputtags) {
 	
 	// the parameters we need to pass in our request to StackOverflow's API
-	var request = {tagged: inputtags};
+	var request = {
+					tagged: inputtags,
+					pagesize: '100'
+					
+					};
 	//							site: 'stackoverflow',
 	//							order: 'desc',
 	//							sort: 'creation'};
@@ -171,7 +175,8 @@ var getUnanswered = function(inputtags) {
 					tagged: inputtags, // pass user input into request
 					site: 'stackoverflow',
 					order: 'desc',
-					sort: 'creation'
+					sort: 'creation',
+					pagesize: '100'
 				  };
 	
 	var result = $.ajax({ // actually we dont need var result here as its not used
