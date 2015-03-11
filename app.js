@@ -1,9 +1,13 @@
 $(document).ready( function() {
+
+	var page =1;
+	 var tags ="";
+
 	$('.unanswered-getter').submit( function(event){
 		// zero out results if previous search has run
 		$('.results').html('');
 		// get the value of the tags the user submitted
-		var tags = $(this).find("input[name='tags']").val();
+		tags = $(this).find("input[name='tags']").val();
 		getUnanswered(tags);
 	}); // submit
 
@@ -11,13 +15,17 @@ $(document).ready( function() {
 		// zero out results if previous search has run
 		$('.results').html('');
 		// get the value of the tags the user submitted
-		var tags = $(this).find("input[name='answerers']").val();
+		 tags = $(this).find("input[name='answerers']").val();
 		getInspiration(tags);
 	}); // submit
 }); // ready function
 
 $('.next-page').on('click', function() { 
-		page++; $('results').html(''); getUnanswered();
+		page++;
+		$('.results').html('');
+		getUnanswered(tags);
+
+		console.log('next page clicked');
 	});
 
 // this function takes the question object returned by StackOverflow 
