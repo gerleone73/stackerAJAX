@@ -130,7 +130,6 @@ var getInspiration = function(inputtags) {
 	// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
 					tagged: inputtags,
-					pagesize: '100'
 					
 					};
 	//							site: 'stackoverflow',
@@ -138,7 +137,7 @@ var getInspiration = function(inputtags) {
 	//							sort: 'creation'};
 	
 	var result = $.ajax({
-		url: "http://api.stackexchange.com/2.2/tags/" + inputtags + "/top-answerers/all_time?site=stackoverflow",
+		url: "http://api.stackexchange.com/2.2/tags/" + inputtags + "/top-answerers/all_time?pagesize=100&site=stackoverflow",
 		data: request,
 		dataType: "jsonp",
 		type: "GET",
