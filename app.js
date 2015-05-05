@@ -1,7 +1,10 @@
+
+var page =1;
+var tags ="";
+
 $(document).ready( function() {
 
-	var page =1;
-	 var tags ="";
+	
 
 	$('.unanswered-getter').submit( function(event){
 		// zero out results if previous search has run
@@ -18,15 +21,17 @@ $(document).ready( function() {
 		 tags = $(this).find("input[name='answerers']").val();
 		getInspiration(tags);
 	}); // submit
-}); // ready function
 
-$('.next-page').on('click', function() { 
+		$('.next-page').on('click', function() { 
 		page++;
 		$('.results').html('');
 		getUnanswered(tags);
 
 		console.log('next page clicked');
 	});
+
+}); // ready function
+
 
 // this function takes the question object returned by StackOverflow 
 // and creates new result to be appended to DOM
@@ -191,7 +196,7 @@ var getInspiration = function(inputtags) {
 
 var getUnanswered = function(inputtags) {
 
-	var page = 1;
+	
 	
 	// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
